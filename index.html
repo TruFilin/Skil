@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+</head>
+<body>
+    <div class="left-text" id="textElement">
+       <h1>Привет, я - веб-разработчик!</h1>
+       <p>Я начинающий разработчик, специализирующийся на разработке сайтов, telegram-ботов, приложений и программ.</p>
+       <p>Вы можете оставить заявку, нажав кнопку ниже.</p>
+       <button class="button-submit" onclick="showFormModal()">Оставить заявку</button>
+    </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="showModal('Обо мне: Я веб-разработчик с опытом работы в HTML, CSS и JavaScript.')">Обо мне</button>
+        <button onclick="showModal('Проекты: У меня есть несколько проектов, которые можно увидеть на GitHub.')">Проекты</button>
+        <button onclick="showSkillsModal()">Навыки</button> <!-- Изменено на функцию для показа навыков -->
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <div id="formModal" class="modal">
+    <div class="modal-backdrop" onclick="closeFormModal()"></div>
+    <div class="modal-content">
+        <span class="close" onclick="closeFormModal()">&times;</span>
+        <h2>Оставить заявку</h2>
+        <div class="input-field">
+            <input type="text" id="name" placeholder="Имя" required>
+        </div>
+        <div class="input-field">
+            <input type="tel" id="phone" placeholder="Телефон" required>
+        </div>
+        <div class="input-field">
+            <select id="interest" required>
+                <option value="" disabled selected>Выберите интересующий вас продукт</option>
+                <option value="telegram-bot">Telegram-бот</option>
+                <option value="сайт">Сайт</option>
+                <option value="приложение">Приложение</option>
+            </select>
+        </div>
+        <button class="button-submit" onclick="submitForm()">Отправить</button> <!-- Стилизация кнопки отправки -->
+      </div>
+   </div>
+
+    <div id="skillsModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <span class="close" onclick="closeSkillsModal()">&times;</span>
+        <h2>Навыки</h2>
+        <div class="skill html">
+            <div class="skill-name">
+                <span>HTML</span>
+                <span>90%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
+            </div>
+        </div>
+        <div class="skill js">
+            <div class="skill-name">
+                <span>JavaScript</span>
+                <span>80%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
+            </div>
+        </div>
+        <div class="skill python">
+            <div class="skill-name">
+                <span>Python</span>
+                <span>70%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
+            </div>
+        </div>
+        <div class="skill css">
+            <div class="skill-name">
+                <span>CSS</span>
+                <span>85%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+function showModal(message) {
+    const modal = document.getElementById('myModal');
+    document.getElementById('modalText').innerText = message;
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.style.bottom = '20px'; // Позиция модального окна при появлении
+    }, 10); // Небольшая задержка для активации анимации
+}
+
+function showFormModal() {
+    const formModal = document.getElementById('formModal');
+    formModal.style.display = 'flex';
+    setTimeout(() => {
+        formModal.style.bottom = '20px'; // Позиция модального окна при появлении
+    }, 10); // Небольшая задержка для активации анимации
+}
+
+function showSkillsModal() {
+    const skillsModal = document.getElementById('skillsModal');
+    skillsModal.style.display = 'flex';
+    setTimeout(() => {
+        skillsModal.style.bottom = '20px'; // Позиция модального окна при появлении
+    }, 10); // Небольшая задержка для активации анимации
+}
+
+function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.bottom = '-50%'; // Позиция модального окна при скрытии
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500); // Время, соответствующее анимации
+}
+
+
+function closeAllModals() {
+    closeModal(document.getElementById('myModal'));
+    closeModal(document.getElementById('formModal'));
+    closeModal(document.getElementById('skillsModal'));
+}
+
+ function closeFormModal() {
+        const formModal = document.getElementById('formModal');
+        formModal.style.bottom = '-50%'; // Позиция модального окна при скрытии
+        setTimeout(() => {
+            formModal.style.display = 'none';
+          }, 500); // Время, соответствующее анимации
+}
+
+function closeSkillsModal() {
+    const skillsModal = document.getElementById('skillsModal');
+    skillsModal.style.bottom = '-50%'; // Позиция модального окна при скрытии
+    setTimeout(() => {
+        skillsModal.style.display = 'none';
+    }, 500); // Время, соответствующее анимации
+}
+
+function submitForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            alert(`Заявка отправлена!\nИмя: ${name}\nТелефон: ${phone}`);
+            closeFormModal(); // Закрываем модальное окно после отправки
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            } else if (event.target == document.getElementById('formModal')) {
+                closeFormModal();
+            } else if (event.target == document.getElementById('skillsModal')) {
+                closeSkillsModal();
+            }
+}
+window.onclick = function(event) {
+    if (event.target == document.getElementById('myModal')) {
+        closeModal();
+    } else if (event.target == document.getElementById('formModal')) {
+        closeFormModal();
+    } else if (event.target == document.getElementById('skillsModal')) {
+        closeSkillsModal();
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: left; /* Устанавливаем выравнивание текста влево */
+    height: 100vh;
+    overflow: hidden; /* Скрываем прокрутку */
+    background-image: url('pic1.jpeg'); /* Фоновое изображение */
+    background-size: cover; /* Заставляем изображение покрывать весь экран */
+    background-position: center; /* Центрируем изображение */
+}
+
+
+.parallax {
+    position: relative;
+    height: 100vh;
+}
+
+.parallax-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('pic1.jpeg'); /* Обновлено на pic1.jpeg */
+    background-size: cover;
+    background-position: center;
+}
+
+.left-text {
+    position: absolute;
+    left: 30px; /* Отступ от левого края */
+    top: 70%;
+    transform: translateY(-50%); /* Центрируем текст по вертикали */
+}
+
+.nav-buttons {
+    position: absolute;
+    top: 20px; /* Отступ сверху */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+}
+
+.nav-buttons button {
+    margin: 0 40px; /* Отступ между кнопками */
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.nav-buttons button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%; /* Центрируем по вертикали */
+    transform: translate(-50%, -50%); /* Центрируем */
+    width: 100%; /* Ширина модального окна */
+    max-width: 600px; /* Максимальная ширина */
+    height: 70%; /* Увеличенная высота модального окна */
+    overflow-y: auto; /* Позволяем вертикальную прокрутку */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease; /* Анимация появления */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Тень для модального окна */
+    background-color: black; /* Черный цвет фона */
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.9); /* Полупрозрачный черный фон */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем по вертикали */
+    align-items: center; /* Центрируем по горизонтали */
+    position: relative;
+    z-index: 2; /* Чтобы содержимое было выше фона */
+    color: white; /* Цвет текста в окне */
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    backdrop-filter: blur(5px); /* Эффект размытия фона */
+    z-index: -1; /* Помещаем его под содержимым */
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.input-field {
+    margin: 10px 0;
+}
+.input-field input {
+    width: 90%; /* Уменьшаем ширину поля ввода */
+    padding: 8px; /* Уменьшаем внутренний отступ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Уменьшаем размер шрифта */
+}
+
+.skill {
+    margin: 15px 0;
+    width: 100%; /* Обеспечиваем, что шкала занимает всю ширину */
+}
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.skill-bar {
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+}
+.skill-fill {
+    height: 100%;
+    transition: width 0.5s; /* Плавная анимация заполнения */
+}
+.html .skill-fill {
+    width: 90%; /* 90% для HTML */
+    background-color: #f16529; /* Цвет для HTML */
+}
+.js .skill-fill {
+    width: 80%; /* 80% для JavaScript */
+    background-color: #f7df1e; /* Цвет для JavaScript */
+}
+.python .skill-fill {
+    width: 70%; /* 70% для Python */
+    background-color: #306998; /* Цвет для Python */
+}
+.css .skill-fill {
+    width: 85%; /* 85% для CSS */
+    background-color: #264de4; /* Цвет для CSS */
+}
+
+/ Новый стиль для текста в модальных окнах /
+.modal-content p, .modal-content h2 {
+    color: white; / Белый цвет текста /
+}
+.button-submit {
+    margin-top: 20px; /* Отступ сверху */
+    padding: 12px 15px; /* Корректировка внутренних отступов */
+    background: linear-gradient(90deg, rgba(0, 123, 255, 0.8), rgba(0, 102, 204, 0.8)); /* Градиентный фон */
+    border: none;
+    width: 40%; /* Устанавливаем ширину кнопки */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s; /* Плавные переходы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для кнопки */
+}
+
+.button-submit:hover {
+    background: linear-gradient(90deg, rgba(0, 102, 204, 1), rgba(0, 123, 255, 1)); /* Непрозрачный градиентный фон при наведении */
+    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
+}
+
+
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    backdrop-filter: blur(5px); /* Эффект размытия фона */
+    z-index: -1; /* Помещаем его под содержимым */
+}
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.9); /* Полупрозрачный черный фон */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* Чтобы содержимое было выше фона */
+    color: white; /* Цвет текста в окне */
+}
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.input-field {
+    margin: 10px 0;
+    width: 70%; /* Ширина для контейнера */
+    text-align: center; /* Центрируем текст */
+}
+
+.input-field input {
+    width: 100%; /* Устанавливаем полное заполнение для поля ввода */
+    padding: 10px; /* Оставляем внутренний отступ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Уменьшаем размер шрифта */
+}
+@media (max-width: 768px) {
+    .left-text {
+        left: 10px; /* Уменьшаем отступ для мобильных */
+    }
+
+    .nav-buttons button {
+        margin: 0 10px; /* Уменьшаем отступ между кнопками для мобильных */
+    }
+
+    .modal {
+        width: 90%; /* Ширина модального окна для мобильных */
+    }
+}
